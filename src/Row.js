@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react'
 import axios from "./axios"
 import './Row.css';
+import YouTube from "react-youtube";
 
 function Row({title , fetchUrl  , isLargeRow}) {
 const[movies , setmovies] = useState([]);
@@ -21,7 +22,14 @@ useEffect(() => {
     
   }, [fetchUrl]);
   // console.log(movies);
-
+const opts = {
+  height : "390",
+  width: "100%",
+  playerVars:{
+    // https://developers.google.com/youtube/player_parameters
+    autoplay: 1,
+  },
+};
   return (
     <div className='row'>
         
@@ -34,6 +42,8 @@ useEffect(() => {
            className = {`row_poster ${isLargeRow && "row_posterLarge" }`}
             src = {`${baseUrl}${isLargeRow ?  movie.poster_path : movie.backdrop_path}`} alt = {movie.name}/> 
         ))}
+<YouTube videoId = {trailerUrl} opts = {opts} />
+
         </div>
   
       {/* container -> posters */}
