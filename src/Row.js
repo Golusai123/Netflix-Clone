@@ -41,7 +41,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
         if (trailer) {
           setTrailerUrl(trailer.key);
         } else {
-          console.log('No trailer found');
+          alert("No trailer were found for this Movie")
         }
       } catch (error) {
         console.error('Failed to fetch the trailer', error);
